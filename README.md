@@ -12,5 +12,5 @@ source venv/bin/activate
 ### 2. Install dependencies
 
 ```bash
-pip install numpy pandas pycocotools
+pip install numpy pandas pycocotools matplotlib scipy
 ```
