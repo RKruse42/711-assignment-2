@@ -13,4 +13,6 @@ source venv/bin/activate
 
 ```bash
 pip install numpy pandas pycocotools matplotlib scipy
+pip install --no-deps segmentation-models-pytorch
+pip install timm safetensors huggingface_hub --no-deps
 ```
