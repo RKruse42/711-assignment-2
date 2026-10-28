@@ -16,6 +16,10 @@ pip install numpy pandas pycocotools matplotlib scipy opencv-python
 pip install --no-deps segmentation-models-pytorch
 pip install timm safetensors huggingface_hub --no-deps
 pip install torch --index-url https://download.pytorch.org/whl/cpu
-python -m pip install torchvision --index-url https://download.pytorch.org/whl/cpu
 python -m pip install tqdm pyyaml click hf-xet httpx2
+
+#cpu
+python -m pip install torchvision --index-url https://download.pytorch.org/whl/cpu
+#gpu
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 ```
