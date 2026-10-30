@@ -1,0 +1,42 @@
+{
+ "ckpt": "outputs/baseline_f0.pt",
+ "recipe": "baseline",
+ "fold": 0,
+ "tta": false,
+ "post_from_half_a": {
+  "thr_low": 0.6,
+  "thr_high": 0.9,
+  "min_area": 300,
+  "join_px": 24,
+  "close_px": 0
+ },
+ "post_from_half_b": {
+  "thr_low": 0.6,
+  "thr_high": 0.9,
+  "min_area": 300,
+  "join_px": 16,
+  "close_px": 2
+ },
+ "honest_pq": 0.29597316280277053,
+ "honest_sq": 0.6309457543122244,
+ "honest_rq": 0.4580822140552722,
+ "post": {
+  "thr_low": 0.6,
+  "thr_high": 0.9,
+  "min_area": 300,
+  "join_px": 16,
+  "close_px": 2
+ },
+ "pq": 0.30009674812131587,
+ "pq_std_over_images": 0.11211376406956142,
+ "sq": 0.628041335616966,
+ "rq": 0.4643610438049096,
+ "fp": 6.593220338983051,
+ "fn": 4.055084745762712,
+ "splits": 0.6779661016949152,
+ "merges": 0.3389830508474576,
+ "n_pred": 11.398305084745763,
+ "net_s_per_img": 0.07886824977230018,
+ "post_s_per_img": 0.07698436690048432,
+ "n_sets": 236
+}

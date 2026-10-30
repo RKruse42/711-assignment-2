@@ -1,0 +1,71 @@
+{
+ "disk_brightness_by_instrument": {
+  "Bh": {
+   "mean_brightness": 112.9,
+   "brightness_range": [
+    105.7,
+    120.3
+   ],
+   "contrast": 34.0
+  },
+  "Ch": {
+   "mean_brightness": 114.4,
+   "brightness_range": [
+    106.8,
+    119.0
+   ],
+   "contrast": 33.6
+  },
+  "Lh": {
+   "mean_brightness": 110.6,
+   "brightness_range": [
+    103.3,
+    117.1
+   ],
+   "contrast": 36.6
+  },
+  "Mh": {
+   "mean_brightness": 112.5,
+   "brightness_range": [
+    102.3,
+    120.1
+   ],
+   "contrast": 35.8
+  },
+  "Th": {
+   "mean_brightness": 108.5,
+   "brightness_range": [
+    103.7,
+    118.3
+   ],
+   "contrast": 33.4
+  },
+  "Uh": {
+   "mean_brightness": 112.0,
+   "brightness_range": [
+    105.4,
+    116.8
+   ],
+   "contrast": 35.3
+  }
+ },
+ "disk_brightness_overall_range": [
+  102.32546997070312,
+  120.25892639160156
+ ],
+ "filament_pixels_percent_of_disk": {
+  "mean": 0.48660009464473075,
+  "median": 0.40422863012670435
+ },
+ "annotator_pixel_agreement_iou": {
+  "pairs": 598,
+  "mean": 0.45589758171246386,
+  "median": 0.471512706715447,
+  "share_below_0_5": 0.5986622073578596
+ },
+ "filaments_touching_another_within_2px_percent": 0.48786437370411023,
+ "small_filaments": {
+  "area_below_200px_percent": 0.7805829979265764,
+  "area_below_60px_percent": 0.012196609342602756
+ }
+}

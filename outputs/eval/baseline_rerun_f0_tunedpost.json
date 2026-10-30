@@ -1,0 +1,42 @@
+{
+ "ckpt": "outputs/models/baseline_rerun_f0.pt",
+ "recipe": "baseline",
+ "fold": 0,
+ "tta": false,
+ "post_from_half_a": {
+  "thr_low": 0.4,
+  "thr_high": 0.995,
+  "min_area": 450,
+  "join_px": 8,
+  "close_px": 0
+ },
+ "post_from_half_b": {
+  "thr_low": 0.4,
+  "thr_high": 0.995,
+  "min_area": 300,
+  "join_px": 16,
+  "close_px": 2
+ },
+ "honest_pq": 0.37966624480938094,
+ "honest_sq": 0.6526048095172431,
+ "honest_rq": 0.5699916418851942,
+ "post": {
+  "thr_low": 0.7,
+  "thr_high": 0.995,
+  "min_area": 450,
+  "join_px": 8,
+  "close_px": 2
+ },
+ "pq": 0.3880768794281406,
+ "pq_std_over_images": 0.1283176740116624,
+ "sq": 0.6532532661298092,
+ "rq": 0.5798419482919621,
+ "fp": 3.6228813559322033,
+ "fn": 3.7245762711864407,
+ "splits": 0.4491525423728814,
+ "merges": 0.2923728813559322,
+ "n_pred": 8.758474576271187,
+ "net_s_per_img": 0.08431590107125296,
+ "post_s_per_img": 0.049350662970207106,
+ "n_sets": 236
+}

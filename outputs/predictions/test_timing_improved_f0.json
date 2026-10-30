@@ -1,0 +1,9 @@
+{
+ "images": 180,
+ "filaments": 1303,
+ "model_load_s": 0.5262472629547119,
+ "mean_s_per_image": 0.09543995989693535,
+ "total_s": 17.706175565719604,
+ "tta": false,
+ "device": "cuda"
+}

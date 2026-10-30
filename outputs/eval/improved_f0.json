@@ -1,0 +1,42 @@
+{
+ "ckpt": "outputs/models/improved_f0.pt",
+ "recipe": "improved",
+ "fold": 0,
+ "tta": false,
+ "post_from_half_a": {
+  "thr_low": 0.4,
+  "thr_high": 0.98,
+  "min_area": 450,
+  "join_px": 8,
+  "close_px": 0
+ },
+ "post_from_half_b": {
+  "thr_low": 0.4,
+  "thr_high": 0.98,
+  "min_area": 200,
+  "join_px": 8,
+  "close_px": 0
+ },
+ "honest_pq": 0.41707566548936414,
+ "honest_sq": 0.65818961316183,
+ "honest_rq": 0.6200543290553948,
+ "post": {
+  "thr_low": 0.4,
+  "thr_high": 0.98,
+  "min_area": 450,
+  "join_px": 8,
+  "close_px": 0
+ },
+ "pq": 0.4230057453701828,
+ "pq_std_over_images": 0.13187732088631318,
+ "sq": 0.6554139811184319,
+ "rq": 0.6282582891449796,
+ "fp": 3.01271186440678,
+ "fn": 3.292372881355932,
+ "splits": 0.2838983050847458,
+ "merges": 0.3855932203389831,
+ "n_pred": 8.580508474576272,
+ "net_s_per_img": 0.3013972514112231,
+ "post_s_per_img": 0.04068885051028829,
+ "n_sets": 236
+}
