@@ -4,9 +4,10 @@
 # %%
 import io
 import json
+import multiprocessing as mp
 import time
 import zipfile
-from multiprocessing import Pool
+from contextlib import nullcontext
 from pathlib import Path
 from typing import Any
 
@@ -52,7 +53,17 @@ SEARCH_GRID = dict(
     close_px=[0, 2, 4],
 )
 
-_EVAL = {}  # filled before the worker pool starts: probabilities, labels, ids
+_EVAL = {}  # probabilities, labels, ids: filled in before the helper processes start
+
+
+def _worker_pool(workers=10):
+    """Helper processes that share the data above by forking.
+
+    Windows cannot fork. There we return None and the work runs in one process:
+    slower, but the same answers."""
+    if "fork" not in mp.get_all_start_methods():
+        return nullcontext(None)
+    return mp.get_context("fork").Pool(workers)
 
 
 def _score_observation(job):
@@ -63,7 +74,8 @@ def _score_observation(job):
 
 
 def _quick_score(observations, settings, pool):
-    per_observation = pool.map(_score_observation, [(obs, settings) for obs in observations])
+    jobs = [(obs, settings) for obs in observations]
+    per_observation = pool.map(_score_observation, jobs) if pool else map(_score_observation, jobs)
     return float(np.mean([pq for scores in per_observation for pq in scores]))
 
 
@@ -147,7 +159,7 @@ def evaluate(
     default_settings = dict(thr_low=0.4, thr_high=0.6, min_area=60, join_px=0, close_px=0)
     result: dict[str, Any] = dict(ckpt=str(checkpoint), recipe=recipe, fold=fold, tta=tta)
     settings: Any
-    with Pool(10) as pool:
+    with _worker_pool() as pool:
         if baseline_cleanup:
             settings = "baseline"
         elif post:

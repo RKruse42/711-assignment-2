@@ -148,19 +148,17 @@ def read_gray(path):
 #   each pixel
 # * `stats.csv` brightness of each image's solar disk
 
+
 # %%
-_POLYGONS = {}  # annotation set id -> list of polygons (filled before the worker pool starts)
-
-
 def _cache_one_observation(job):
-    obs, annotation_ids, file_name = job
+    obs, annotation_ids, file_name, polygons = job
     image = read_gray(IMG_DIR / file_name)
     np.save(CACHE / "img" / f"{obs}.npy", image)
 
     votes = np.zeros((SIZE, SIZE), np.float32)
     for annotation_id in annotation_ids:
         labels = np.zeros((SIZE, SIZE), np.uint8)
-        for number, polygon in enumerate(_POLYGONS.get(annotation_id, []), start=1):
+        for number, polygon in enumerate(polygons.get(annotation_id, []), start=1):
             rle = mask_utils.merge(mask_utils.frPyObjects(polygon, SIZE, SIZE))
             labels[mask_utils.decode(rle) > 0] = number
         np.save(CACHE / "lab" / f"{annotation_id}.npy", labels)
@@ -175,13 +173,14 @@ def _cache_one_observation(job):
 
 def prepare_cache(workers=8):
     imgs, anns = load_index()
-    _POLYGONS.update({k: list(g["segmentation"]) for k, g in anns.groupby("image_id")})
+    polygons = {k: list(g["segmentation"]) for k, g in anns.groupby("image_id")}
 
     for folder in ("img", "soft", "lab"):
         (CACHE / folder).mkdir(parents=True, exist_ok=True)
 
     jobs = [
-        (obs, list(group["id"]), group["file_name"].iloc[0]) for obs, group in imgs.groupby("obs")
+        (obs, list(group["id"]), group["file_name"].iloc[0], {i: polygons[i] for i in group["id"]})
+        for obs, group in imgs.groupby("obs")
     ]
     with Pool(min(workers, 12)) as pool:
         rows = []

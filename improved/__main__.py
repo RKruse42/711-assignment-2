@@ -1,3 +1,4 @@
 from improved.cli import main
 
-main()
+if __name__ == "__main__":  # needed on Windows
+    main()
